@@ -1,0 +1,59 @@
+########## customer table ###########
+CREATE TABLE `customer` (
+  `id` int NOT NULL,
+  `first_name` varchar(60) NOT NULL,
+  `last_name` varchar(60) NOT NULL,
+  `gender` varchar(60) DEFAULT NULL,
+  `email` varchar(60) NOT NULL,
+  `billing_address` varchar(60) DEFAULT NULL,
+  `shipping_address` varchar(60) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+
+########## salesorder table #########
+CREATE TABLE `salesorder` (
+  `id` int NOT NULL,
+  `customer_id` int DEFAULT NULL,
+  `order_number` varchar(60) NOT NULL,
+  `created_at` varchar(60) NOT NULL,
+  `modified_at` varchar(60) NOT NULL,
+  `order_total` double NOT NULL,
+  `total_qty_ordered` bigint NOT NULL,
+  `salesordercol` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+########## salesorderitem Table ###########
+CREATE TABLE `salesorderitem` (
+  `item_id` int NOT NULL,
+  `order_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `product_sku` varchar(500) NOT NULL,
+  `product_name` varchar(500) DEFAULT NULL,
+  `qty_ordered` int NOT NULL,
+  `price` double NOT NULL,
+  `line_total` double NOT NULL,
+  `created_at` varchar(60) NOT NULL,
+  `modified_at` varchar(60) NOT NULL,
+  PRIMARY KEY (`item_id`)
+)
+
+########### sales_order_item_flat table ##########
+CREATE TABLE `sales_order_item_flat` (
+   `item_id` INT,
+   `order_id` INT,
+   `order_number` VARCHAR(100),
+   `order_created_at` VARCHAR(100),
+   `order_total` FLOAT,
+   `total_qty_ordered` INT,
+   `customer_id` INT,
+   `customer_name` VARCHAR(100),
+   `customer_gender` VARCHAR(100),
+   `customer_email` VARCHAR(100),
+   `product_id` INT,
+   `product_sku` VARCHAR(100),
+   `product_name` VARCHAR(100),
+   `item_price` FLOAT,
+   `item_qty_order` INT,
+   `item_unit_total` FLOAT,
+   `load_date` DATE)
